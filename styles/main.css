@@ -9,6 +9,15 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 h1 {
 	font-size: 3.5em;
 	margin: 0;
@@ -37,17 +46,37 @@ body {
 	color: white;
 	background: url('../images/iframe-bg.png') no-repeat;
 	display: flex;
-	flex-direction: row-reverse;
+	flex-direction: row;
 }
 
 .half {
 	width: 50%;
+}
+
+.album-text {
 	padding-top: 20px;
 	padding-right: 20px;
 	text-align: center;
 }
 
-.flower {
-	height: 100%;
-	width: auto;
+.interactive {
+	display: flex;
+	justify-content: flex-end;
+	padding-top: 30px;
+	padding-right: 90px;
+}
+
+.play-button, .stop-button {
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.button {
+	width: 30px;
+	height: 30px;
+}
+
+.hidden {
+	display: none;
 }

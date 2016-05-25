@@ -4,12 +4,25 @@
 	<meta charset="UTF-8">
 	<title>Flume Skin Spotify Homepage Takeover</title>
 	<link rel="stylesheet" type="text/css" href="styles/main.css">
+	<script type="text/javascript" src="scripts/Tone.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
 </head>
 <body>
-	<div class="half">
+	<div class="half interactive">
+		<div class="button-container">
+			<div id="play-button" class="play-button">
+				<img class="button" src="images/play-white.svg" alt="Play button"/>
+			</div>
+			<div id="stop-button" class="stop-button hidden">
+				<img class="button" src="images/stop-white.svg" alt="Stop button"/>
+			</div>
+		</div>
+	</div>
+	<div class="half album-text">
 		<img src="images/logo.svg" />
 		<h1>Skin</h1>
-		<h2>Listen now</h2>
+		<h2><a href="spotify:album:5vaoiQeWdC1ssSaM2WjcjZ">Listen now</a></h2>
 	</div>
 </body>
 </html>
