@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Swiss';
+  src:  url('../fonts/Swiss721BT-Light.woff2') format('woff2'),
+        url('../fonts/Swiss721BT-Light.woff') format('woff');
+  font-weight: 100;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	font-size: 3.5em;
+	margin: 0;
+	font-weight: 100;
+}
+
+h2 {
+	font-weight: 100;
+	font-size: 2.0em;
+	margin-top: 0.7em;
+}
+
+html, body {
+	width: 800px;
+	height: 235px;
+	min-width: 800px;
+	min-height: 235px;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Swiss', Arial, sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+	color: white;
+	background: url('../images/iframe-bg.png') no-repeat;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.half {
+	width: 50%;
+	padding-top: 20px;
+	padding-right: 20px;
+	text-align: center;
+}
+
+.flower {
+	height: 100%;
+	width: auto;
+}
