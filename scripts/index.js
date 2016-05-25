@@ -1,5 +1,5 @@
 var instrumental = new Tone.Player({
-	"url" : "sounds/instrumental.wav"
+	"url" : "sounds/nblu_instr.mp3"
 }).toMaster();
 
 $(function() {
