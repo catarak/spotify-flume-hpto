@@ -44,7 +44,7 @@ body {
 	font-weight: 100;
 	text-transform: uppercase;
 	color: white;
-	background: url('../images/iframe-bg.png') no-repeat;
+	background: url('../images/iframe-bg-small.png') no-repeat;
 	display: flex;
 	flex-direction: row;
 }
