@@ -72,6 +72,10 @@ body {
 	cursor: pointer;
 }
 
+.play-button:hover, .stop-button:hover {
+	opacity: 0.7;
+}
+
 .button {
 	width: 30px;
 	height: 30px;
