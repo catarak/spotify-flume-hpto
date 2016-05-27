@@ -62,14 +62,16 @@ body {
 .interactive {
 	display: flex;
 	justify-content: flex-end;
-	padding-top: 30px;
-	padding-right: 90px;
+	position: relative;
 }
 
 .play-button, .stop-button {
 	text-align: center;
 	display: inline-block;
 	cursor: pointer;
+	position: absolute;
+	top: 85px;
+	right: 220px;
 }
 
 .play-button:hover, .stop-button:hover {
@@ -77,8 +79,18 @@ body {
 }
 
 .button {
+	width: 60px;
+	height: 60px;
+}
+
+.stop-button .button{
 	width: 30px;
 	height: 30px;
+}
+
+.stop-button {
+	top: 40px;
+	right: 100px;
 }
 
 .hidden {
