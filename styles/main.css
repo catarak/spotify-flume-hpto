@@ -37,6 +37,7 @@ html, body {
 	min-height: 235px;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
 	background: url('../images/iframe-bg-small.png') no-repeat;
 	display: flex;
 	flex-direction: row;
+	position: relative;
 }
 
 .half {
@@ -72,6 +74,7 @@ body {
 	position: absolute;
 	top: 85px;
 	right: 220px;
+	z-index: 10;
 }
 
 .play-button:hover, .stop-button:hover {
@@ -91,6 +94,16 @@ body {
 .stop-button {
 	top: 40px;
 	right: 100px;
+}
+
+.coveringCanvas {
+	position: absolute;
+	left: -90px;
+	top: 45.7%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 .hidden {
