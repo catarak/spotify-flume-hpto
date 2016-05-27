@@ -251,9 +251,9 @@ var loop = new Tone.Loop(function(time){
 }, "4n").start(0);
 
 
-Tone.Buffer.on("load", function(){
-	//move these two guys into a button
-	Tone.Transport.start();
-	// instrumental.start();
-	//instrumental.stop to stop it
-});
+// Tone.Buffer.on("load", function(){
+// 	//move these two guys into a button
+// 	// Tone.Transport.start();
+// 	// instrumental.start();
+// 	//instrumental.stop to stop it
+// });
