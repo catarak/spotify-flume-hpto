@@ -30,7 +30,6 @@ var masks = [];
 var maskLoader = 0;
 
 var glowOutlines = [];
-// var circle;
 var stage = new PIXI.Container();
 
 var tiltshiftmode = new PIXI.filters.TiltShiftFilter();
@@ -90,22 +89,12 @@ window.onload = function(){
 				}
 			}
 		}
-		// sprites[1].alpha = counter/100;
-		// counter ++;
-		// if(counter > 100) counter = 0;
 		requestAnimationFrame(animate);
 	}
 
 	for(var i = 0; i < 14; i ++) {
 		glowOutlines[i] = new glowOutline(i);
 	}
-
-	// circle = new PIXI.Graphics();
-	// circle.lineStyle ( 1 , 0x000000,  1);
-	// circle.beginFill(0x55728A, 0.5);
-	// circle.drawCircle(0, 0, 20);
-	// circle.endFill();
-	// stage.addChild(circle);
 
 	animate();
 
@@ -117,18 +106,6 @@ window.onload = function(){
 	mask.onload = function() {
 		maskContext.drawImage(mask, 0, 0, 640, 640);
 	};
-
-	// for(var i = 0; i < 14; i ++){
-	// 	masks[i] = new Image();
-	// 	masks[i].src = "images/masks/" + (i + 1) + ".png";
-	// 	masks[i].onload = function(){
-	// 		maskLoader ++;
-	// 		if(maskLoader == 14){
-	// 			console.log("all masks loaded");
-	// 			// draw();
-	// 		}
-	// 	};
-	// }
 
 	maskCanvas.onmousemove=function(e){
 		handleMouseover(maskContext.getImageData(e.offsetX, e.offsetY, 1, 1).data);
