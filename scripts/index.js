@@ -18,6 +18,10 @@ $(function() {
 		$(".coveringCanvas").addClass("hidden");
 		$("#play-button").toggleClass("hidden");
 	});
+
+	$(".coveringCanvas").click(function() {
+		 window.open('www.flumemusic.com/skin', '_blank');
+	})
 });
 
 var maskContext;
