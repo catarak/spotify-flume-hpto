@@ -33,6 +33,13 @@ var glowOutlines = [];
 // var circle;
 var stage = new PIXI.Container();
 
+var tiltshiftmode = new PIXI.filters.TiltShiftFilter();
+tiltshiftmode.blur = 100;
+tiltshiftmode.gradientBlur = 800;
+tiltshiftmode.padding = 100;
+
+stage.filters = [tiltshiftmode];
+
 var glowOutline = function(num){
 	this.texture = new PIXI.Texture.fromImage('images/masks/' + (num + 1) + '.png');
 	this.sprite = new PIXI.Sprite(this.texture);
@@ -204,14 +211,14 @@ function handleMouseover(color){
 function schedulePlay(num){
 	console.log(num);
 	console.log("currentmouse " + currentMouse)
-	if(currentMouse != num){
-		if((num + 1) !== 0 && currentMouse !== 0 && currentMouse !== null){
-			console.log("fading stuff");
-			for(var i = 0; i < 14; i ++){
-				if(i != (num - 1)) glowOutlines[i].fadeOut();
-			}
-			glowOutlines[num - 1].fadeIn();
+	if((num + 1) !== 0 && currentMouse !== 0 && currentMouse !== null){
+		console.log("fading stuff");
+		for(var i = 0; i < 14; i ++){
+			if(i != (num - 1)) glowOutlines[i].fadeOut();
 		}
+		glowOutlines[num - 1].fadeIn();
+	}
+	if(currentMouse != num){
 		var nextNote = Math.floor(Tone.context.currentTime / 0.125);
 		nextNote = nextNote * 0.125 + 0.125;
 		sampler.triggerRelease(nextNote);
