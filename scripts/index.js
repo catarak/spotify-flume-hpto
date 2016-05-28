@@ -20,7 +20,7 @@ $(function() {
 	});
 
 	$(".coveringCanvas").click(function() {
-		 window.open('http://www.flumemusic.com/skin', '_blank');
+		 window.open('http://www.flumemusic.com/skin', '_new');
 	})
 });
 
