@@ -3,15 +3,15 @@ $(function() {
 		Tone.Transport.start();
 		$(this).toggleClass("hidden");
 		$(".coveringCanvas").removeClass("hidden");
-		$("#stop-button").toggleClass("hidden");
+		// $("#stop-button").toggleClass("hidden");
 	});
 
-	$("#stop-button").click(function() {
-		Tone.Transport.stop();
-		$(this).toggleClass("hidden");
-		$(".coveringCanvas").addClass("hidden");
-		$("#play-button").toggleClass("hidden");
-	});
+	// $("#stop-button").click(function() {
+	// 	Tone.Transport.stop();
+	// 	$(this).toggleClass("hidden");
+	// 	$(".coveringCanvas").addClass("hidden");
+	// 	$("#play-button").toggleClass("hidden");
+	// });
 
 	$(".coveringCanvas, .album-text").click(function() {
 		 window.open('http://www.flumemusic.com/skin', '_new');
