@@ -13,7 +13,7 @@ $(function() {
 		$("#play-button").toggleClass("hidden");
 	});
 
-	$(".coveringCanvas").click(function() {
+	$(".coveringCanvas, .album-text").click(function() {
 		 window.open('http://www.flumemusic.com/skin', '_new');
 	});
 });
