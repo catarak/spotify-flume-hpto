@@ -1,18 +1,12 @@
-var instrumental = new Tone.Player({
-	"url" : "sounds/nblu_instr.mp3"
-}).toMaster();
-
 $(function() {
 	$("#play-button").click(function() {
 		Tone.Transport.start();
-		instrumental.start();
 		$(this).toggleClass("hidden");
 		$(".coveringCanvas").removeClass("hidden");
 		$("#stop-button").toggleClass("hidden");
 	});
 
 	$("#stop-button").click(function() {
-		instrumental.stop();
 		Tone.Transport.stop();
 		$(this).toggleClass("hidden");
 		$(".coveringCanvas").addClass("hidden");
@@ -21,7 +15,7 @@ $(function() {
 
 	$(".coveringCanvas").click(function() {
 		 window.open('http://www.flumemusic.com/skin', '_new');
-	})
+	});
 });
 
 var maskContext;
@@ -36,12 +30,71 @@ var maskLoader = 0;
 var glowOutlines = [];
 var stage = new PIXI.Container();
 
-var tiltshiftmode = new PIXI.filters.TiltShiftFilter();
-tiltshiftmode.blur = 100;
-tiltshiftmode.gradientBlur = 800;
-tiltshiftmode.padding = 100;
+function NoRedFilter() {
+  var vertexShader = null;
+  var fragmentShader = [
+    'precision mediump float;',
+    '',
+    'varying vec2 vTextureCoord;',
+    'uniform sampler2D uSampler;',
+    '',
+    'void main(void)',
+    '{',
+    '    vec4 pixel = texture2D(uSampler, vTextureCoord);',
+    '    pixel.r = 0.0;',
+    '    gl_FragColor = pixel;',
+    
+    '}'
+  ].join('\n');
+  var uniforms = {};
 
-stage.filters = [tiltshiftmode];
+  PIXI.AbstractFilter.call(this,
+    vertexShader,
+    fragmentShader,
+    uniforms
+  );
+}
+
+NoRedFilter.prototype = Object.create(PIXI.AbstractFilter.prototype);
+NoRedFilter.prototype.constructor = NoRedFilter;
+
+var filter = new NoRedFilter();
+
+
+// var fragmentSrc = [
+//     "precision mediump float;",
+//     "varying vec2 vTextureCoord;",
+//     // "uniform sampler2D uSampler;",
+//     "void main(void)",
+//     "{",
+//     "    vec4 pixel = texture2D(uSampler, vTextureCoord);",
+//     // "    float distance = pow(pow((vTextureCoord.x - 0.5), 2.0) + pow((vTextureCoord.y - 0.5), 2.0)), 0.5);",
+//     // "    pixel = pixel - (distance * 5.0 * vec4(1.0, 1.0, 1.0, 1.0));",
+//     "pixel.r = 1.0",
+//     "gl_FragColor = pixel;",
+//     "}"
+// ].join('\n');
+
+// var vertexSrc =[
+// 	"attribute vec4 aPosition;",
+// 	"varying   vec3 vPosition;",
+// 	"void main() {",
+// 		"gl_Position = aPosition;",
+// 		"vPosition = aPosition.xyz;",
+// 	"}"
+// ].join('\n');
+
+// var uniforms = {
+//   iMouse: {
+//     type: "2f",
+//     value: {
+//       x: 0,
+//       y: 0
+//     }
+//   }
+// };
+// var shader = new PIXI.AbstractFilter(vertexSrc, fragmentSrc, uniforms);
+
 
 var glowOutline = function(num){
 	this.texture = new PIXI.Texture.fromImage('images/masks/' + (num + 1) + '.png');
@@ -49,6 +102,7 @@ var glowOutline = function(num){
 	this.sprite.width = animationCanvas.width;
 	this.sprite.height = animationCanvas.height;
 	this.sprite.alpha = 0;
+	this.sprite.filters = [filter];
 	stage.addChild(this.sprite);
 	this.isFadingIn = false;
 	this.isFadingOut = false;
@@ -226,22 +280,3 @@ var sampler = new Tone.Sampler({
 	}
 }).toMaster();
 
-var click = new Tone.SimpleSynth({
-	envelope: {
-		decay: 0.01,
-		release: 0,
-		sustain: 0
-	}
-}).toMaster();
-
-var loop = new Tone.Loop(function(time){
-	// click.triggerAttackRelease("C4", time);
-}, "4n").start(0);
-
-
-// Tone.Buffer.on("load", function(){
-// 	//move these two guys into a button
-// 	// Tone.Transport.start();
-// 	// instrumental.start();
-// 	//instrumental.stop to stop it
-// });
