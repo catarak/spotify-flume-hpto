@@ -41,7 +41,9 @@ function NoRedFilter() {
     'void main(void)',
     '{',
     '    vec4 pixel = texture2D(uSampler, vTextureCoord);',
-    '    pixel.r = 0.0;',
+    '    float distance = pow(pow((vTextureCoord.x - 0.5), 2.0) + pow((vTextureCoord.y - 0.5), 2.0), 0.5);',
+    '    pixel = pixel - (distance * 1.0 * vec4(1.0, 1.0, 1.0, 1.0));',
+    // '    pixel.r = 0.0;',
     '    gl_FragColor = pixel;',
     
     '}'
