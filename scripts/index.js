@@ -62,42 +62,6 @@ NoRedFilter.prototype.constructor = NoRedFilter;
 
 var filter = new NoRedFilter();
 
-
-// var fragmentSrc = [
-//     "precision mediump float;",
-//     "varying vec2 vTextureCoord;",
-//     // "uniform sampler2D uSampler;",
-//     "void main(void)",
-//     "{",
-//     "    vec4 pixel = texture2D(uSampler, vTextureCoord);",
-//     // "    float distance = pow(pow((vTextureCoord.x - 0.5), 2.0) + pow((vTextureCoord.y - 0.5), 2.0)), 0.5);",
-//     // "    pixel = pixel - (distance * 5.0 * vec4(1.0, 1.0, 1.0, 1.0));",
-//     "pixel.r = 1.0",
-//     "gl_FragColor = pixel;",
-//     "}"
-// ].join('\n');
-
-// var vertexSrc =[
-// 	"attribute vec4 aPosition;",
-// 	"varying   vec3 vPosition;",
-// 	"void main() {",
-// 		"gl_Position = aPosition;",
-// 		"vPosition = aPosition.xyz;",
-// 	"}"
-// ].join('\n');
-
-// var uniforms = {
-//   iMouse: {
-//     type: "2f",
-//     value: {
-//       x: 0,
-//       y: 0
-//     }
-//   }
-// };
-// var shader = new PIXI.AbstractFilter(vertexSrc, fragmentSrc, uniforms);
-
-
 var glowOutline = function(num){
 	this.texture = new PIXI.Texture.fromImage('images/masks/' + (num + 1) + '.png');
 	this.sprite = new PIXI.Sprite(this.texture);
@@ -129,20 +93,20 @@ window.onload = function(){
 		transparent: true
 	});
 
-	// var counter = 0;
-	var fadeInc = 0.1;
+	var fadeInInc = 0.1;
+	var fadeOutInc = 0.01;
 	function animate() {
 		renderer.render(stage);
 		for(var i = 0; i < 14; i ++){
 			if(glowOutlines[i].isFadingIn){
-				glowOutlines[i].sprite.alpha += fadeInc;
+				glowOutlines[i].sprite.alpha += fadeInInc;
 				if(glowOutlines[i].sprite.alpha > 1){
 					glowOutlines[i].sprite.alpha = 1;
 					glowOutlines[i].isFadingIn = false;
 				}
 			}
 			if(glowOutlines[i].isFadingOut){
-				glowOutlines[i].sprite.alpha -= fadeInc;
+				glowOutlines[i].sprite.alpha -= fadeOutInc;
 				if(glowOutlines[i].sprite.alpha < 0){
 					glowOutlines[i].sprite.alpha = 0;
 					glowOutlines[i].isFadingOut = false;
@@ -281,4 +245,6 @@ var sampler = new Tone.Sampler({
 		14 : "sounds/vocals/14.wav"
 	}
 }).toMaster();
+sampler.volume.value = -5;
+
 
