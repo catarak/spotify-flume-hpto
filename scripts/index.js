@@ -13,8 +13,12 @@ $(function() {
 	// 	$("#play-button").toggleClass("hidden");
 	// });
 
-	$(".coveringCanvas, .album-text").click(function() {
-		 window.open('http://www.flumemusic.com/skin', '_new');
+	$(".coveringCanvas").click(function() {
+		window.open('http://www.flumemusic.com/skin', '_new');
+	});
+
+	$(".album-text").click(function() {
+		window.open('spotify:album:6VHCF8ykDo3STafE5JfMAs');
 	});
 });
 
