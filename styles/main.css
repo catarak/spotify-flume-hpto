@@ -59,6 +59,7 @@ body {
 	padding-right: 20px;
 	text-align: center;
 	cursor: pointer;
+	z-index: 9999;
 }
 
 .interactive {

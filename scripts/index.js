@@ -4,6 +4,7 @@ $(function() {
 		$(this).toggleClass("hidden");
 		$(".coveringCanvas").removeClass("hidden");
 		// $("#stop-button").toggleClass("hidden");
+		return false;
 	});
 
 	// $("#stop-button").click(function() {
